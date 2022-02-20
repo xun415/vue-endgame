@@ -1,25 +1,24 @@
 <template>
-	<form @submit.prevent="submitForm">
-		<div>
-			<label for="username">id: </label>
-			<input
-				id="username"
-				v-model="username"
-				:class="isUsernameValid ? '' : 'invalid'"
-				type="text"
-			/>
+	<div class="contents">
+		<div class="form-wrapper form-wrapper-sm">
+			<form class="form" @submit.prevent="submitForm">
+				<div>
+					<label for="username">id: </label>
+					<input id="username" v-model="username" type="text" />
+				</div>
+				<div>
+					<label for="password">pw: </label>
+					<input id="password" v-model="password" type="text" />
+				</div>
+				<div>
+					<label for="nickname">nickname: </label>
+					<input id="nickname" v-model="nickname" type="text" />
+				</div>
+				<button class="btn" type="submit">회원 가입</button>
+			</form>
+			<p class="log">{{ logMessage }}</p>
 		</div>
-		<div>
-			<label for="password">pw: </label>
-			<input id="password" v-model="password" type="text" />
-		</div>
-		<div>
-			<label for="nickname">nickname: </label>
-			<input id="nickname" v-model="nickname" type="text" />
-		</div>
-		<button :disabled="!isUsernameValid" type="submit">회원 가입</button>
-		<p>{{ logMessage }}</p>
-	</form>
+	</div>
 </template>
 
 <script>
@@ -67,7 +66,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .invalid {
 	border: 1px red solid;
 }
