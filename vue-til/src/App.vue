@@ -25,3 +25,4 @@ export default {
 @import './css/reset.css';
 @import './css/common.css';
 </style>
+q
