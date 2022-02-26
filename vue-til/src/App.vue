@@ -15,9 +15,7 @@ export default {
 	components: {
 		AppHeader,
 	},
-	created() {
-		var a = 10;
-	},
+	created() {},
 };
 </script>
 
@@ -25,4 +23,3 @@ export default {
 @import './css/reset.css';
 @import './css/common.css';
 </style>
-q

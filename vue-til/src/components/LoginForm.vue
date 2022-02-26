@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import { loginUser } from '@/api/index';
 import { validateEmail } from '@/utils/validation';
 
 export default {
@@ -56,10 +55,9 @@ export default {
 					username: this.username,
 					password: this.password,
 				};
-				const { data } = await loginUser(userData);
-				// this.logMessage = `${data.user.username} 님 환영합니다.`;
-				console.log(data.user.username);
-				this.$store.commit('setUsername', data.user.username);
+				// 로그인 처리가 끝나야 라우터로 이동해야하기 때문에 await 를 붙여준다
+				await this.$store.dispatch('LOGIN', userData);
+
 				// 메인페이지로 이동
 				this.$router.push('/main');
 			} catch (err) {

@@ -23,6 +23,10 @@ export default new VueRouter({
 			component: () => import('@/views/SignupPage'),
 		},
 		{
+			path: '/add',
+			component: () => import('@/views/PostAddPage'),
+		},
+		{
 			path: '*',
 			component: () => import('@/views/NotFoundPage'),
 		},
