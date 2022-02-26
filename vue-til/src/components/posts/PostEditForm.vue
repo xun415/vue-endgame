@@ -1,6 +1,6 @@
 <template>
 	<div class="contents">
-		<h1 class="page-header">Create Post</h1>
+		<h1 class="page-header">Edit Post</h1>
 		<div class="form-wrapper">
 			<form class="form" @submit.prevent="submitForm">
 				<div>
@@ -14,7 +14,7 @@
 						Contents must be less than 250
 					</p>
 				</div>
-				<button class="btn" type="submit">create</button>
+				<button class="btn" type="submit">edit</button>
 			</form>
 			<p class="log">
 				{{ logMessage }}
@@ -24,16 +24,24 @@
 </template>
 
 <script>
-import { createPost } from '@/api/posts';
+import { editPost, fetchPost } from '@/api/posts';
 
 export default {
-	name: 'PostAddForm',
+	name: 'PostEditForm',
 	data() {
 		return {
+			id: '',
 			title: '',
 			contents: '',
 			logMessage: '',
 		};
+	},
+	async created() {
+		const id = this.$route.params.id;
+		const { data } = await fetchPost(id);
+		console.log(data);
+		this.title = data.title;
+		this.contents = data.contents;
 	},
 	computed: {
 		isContentsValid() {
@@ -43,15 +51,16 @@ export default {
 	methods: {
 		async submitForm() {
 			try {
-				const response = await createPost({
+				const id = this.$route.params.id;
+				const response = await editPost(id, {
 					title: this.title,
 					contents: this.contents,
 				});
-				console.log(response);
 				this.$router.push('/main');
 			} catch (err) {
-				console.log(err.response.data.message);
-				this.logMessage = err.response.data.message;
+				console.log(err.response);
+				// alert('수정 처리중 에러가 발생했습니다.');
+				this.logMessage = err;
 			}
 		},
 	},
