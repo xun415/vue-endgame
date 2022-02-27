@@ -24,14 +24,14 @@ export default new Vuex.Store({
 		setUsername(state, username) {
 			state.username = username;
 		},
+		setToken(state, token) {
+			state.token = token;
+		},
 		clearUsername(state) {
 			state.username = '';
 		},
 		clearToken(state) {
 			state.token = '';
-		},
-		setToken(state, token) {
-			state.token = token;
 		},
 	},
 	actions: {
@@ -48,10 +48,6 @@ export default new Vuex.Store({
 			saveUserToCookie(data.user.username);
 
 			return data;
-		},
-		LOGOUT({ commit }) {
-			commit('clearUsername');
-			commit('clearToken');
 		},
 	},
 });

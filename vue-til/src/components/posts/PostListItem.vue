@@ -3,7 +3,7 @@
 		<div class="post-title">{{ postItem.title }}</div>
 		<div class="post-contents">{{ postItem.contents }}</div>
 		<div class="post-time">
-			{{ postItem.createdAt }}
+			{{ postItem.createdAt | formatDate }}
 			<i class="icon ion-md-create" @click="routeEditPage"></i>
 			<i class="icon ion-md-trash" @click="deleteItem"></i>
 		</div>
@@ -21,6 +21,7 @@ export default {
 			required: true,
 		},
 	},
+	filters: {},
 	methods: {
 		routeEditPage() {
 			const id = this.postItem._id;

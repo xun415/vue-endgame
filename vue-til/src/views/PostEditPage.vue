@@ -1,6 +1,6 @@
 <template>
 	<div class="form-container">
-		<PostEditForm @refresh=""></PostEditForm>
+		<PostEditForm></PostEditForm>
 	</div>
 </template>
 
