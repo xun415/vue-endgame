@@ -16,6 +16,7 @@
 					<input id="password" v-model="password" type="text" />
 				</div>
 				<button
+					:class="!isUsernameValid || !password ? 'disabled' : null"
 					:disabled="!isUsernameValid || !password"
 					class="btn"
 					type="submit"
