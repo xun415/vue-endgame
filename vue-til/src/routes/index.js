@@ -30,6 +30,11 @@ const router = new VueRouter({
 			meta: { auth: true },
 		},
 		{
+			path: '/analyze/:keywordType',
+			name: 'analyze',
+			component: () => import('@/views/Analyze'),
+		},
+		{
 			path: '/post/:id',
 			component: () => import('@/views/PostEditPage'),
 			meta: { auth: true },
